@@ -6,7 +6,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm,scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 
 class BlogPostContentfulTemplate extends React.Component {
   render() {
@@ -31,6 +31,7 @@ class BlogPostContentfulTemplate extends React.Component {
         />
         <h1>{post.title}</h1>
         {documentToReactComponents(post.content.json, options)}
+        <div dangerouslySetInnerHTML={{ __html: this.props.data.contentfulPost.childContentfulPostMdTextNode.childMarkdownRemark.html}}></div>
         <hr
           style={{
             marginBottom: rhythm(1),
@@ -83,6 +84,11 @@ export const pageQuery = graphql`
       author
       content {
         json
+      }
+      childContentfulPostMdTextNode {
+        childMarkdownRemark {
+          html
+        }
       }
     }
   }
