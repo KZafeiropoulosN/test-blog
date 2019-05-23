@@ -32,6 +32,7 @@ class BlogPostContentfulTemplate extends React.Component {
         <h1>{post.title}</h1>
         {documentToReactComponents(post.content.json, options)}
         <div dangerouslySetInnerHTML={{ __html: this.props.data.contentfulPost.childContentfulPostMdTextNode.childMarkdownRemark.html}}></div>
+        <div><p>adding a test paragraph</p></div>
         <hr
           style={{
             marginBottom: rhythm(1),
